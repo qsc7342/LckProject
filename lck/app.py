@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect ,url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_cors import CORS
 import time
 import requests
@@ -14,17 +14,14 @@ CORS(app)
 
 ### Routes for customer part start ###
 @app.route('/')
-def test():
-	url = "http://ncov.mohw.go.kr/"
-
-	response = requests.get(url)
-	dom_a = BeautifulSoup(response.content, 'html.parser')
-
-	update_time = dom_a.select_one('body > div > div.mainlive_container > div.container > div > div.liveboard_layout > div.liveNumOuter > h2 > a > span.livedate').text.strip()
+def index():
+    return render_template('index.html')
 
 
-	return render_template('test.html',data = update_time)
+@app.route('/rank')
+def rank():
+    return render_template('rank.html')
 
 
 if __name__ == '__main__':
-	app.run()
+    app.run()

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <title>역시민균이다..</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-dark bg-primary py-2">
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item active">
+			  <a class="nav-link">LCK.GG <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#">팀 순위</a>
+			</li>
+		</ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
