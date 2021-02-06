@@ -13,13 +13,14 @@ CORS(app)
 
 
 ### Routes for customer part start ###
+
 @app.route('/')
-def index():
-    return render_template("index.html")
+def MainPage():
+    return render_template('index.html')
 
 
 @app.route('/rank')
-def rank():
+def TeamRank():
     b = 1
     url = "https://namu.wiki/w/2021%20LoL%20Champions%20Korea%20Spring"
 
@@ -41,7 +42,7 @@ def rank():
                     t.append(digit)
     six = 0
     four = 3
-    print(t[20])
+
     for i in range(11, 98):
         if(six == 6):
             four -= 1
@@ -55,6 +56,11 @@ def rank():
         else:
             six += 1
             k.append(t[i])
+            if(i == 97):
+                r.append(k)
+
+    for team in range(0, 10):
+        r[team].append("../static/image/team/" + r[team][0] + ".png")
 
     return render_template('rank.html', data_list=r)
 
