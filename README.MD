@@ -8,7 +8,7 @@ $ python -m pip install --upgrade pip
 $ pip3 install flask
 $ pip3 install flask_cors
 $ pip3 install bs4
+$ flask run
 ```
-<br>
-**Development**
-* (2021. 02. 07) 2021 LCK 스프링 팀 순위 페이지 제작 (실시간 자동 갱신)
+
+21.02.06 ~ 21.02.07 : 팀 순위 조회 기능 페이지 구현 (실시간 갱신)
