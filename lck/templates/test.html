@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 <body>
-	<nav class="navbar navbar-dark bg-primary">
-		<div>
-			<strong><h1 style="display:inline; color:white">LCK.GG</h1></strong>
-			<span>팀순위</span>
-		</div>
+	<nav class="navbar navbar-dark bg-primary py-2">
+		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+			<li class="nav-item active">
+			  <a class="nav-link">LCK.GG <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+			  <a class="nav-link" href="#">팀 순위</a>
+			</li>
+		</ul>
 	</nav>
 	{{ data }}
 </body>
