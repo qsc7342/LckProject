@@ -20,6 +20,7 @@ def index():
 
 @app.route('/rank')
 def rank():
+
     return render_template('rank.html')
 
 
