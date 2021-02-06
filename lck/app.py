@@ -57,6 +57,9 @@ def TeamRank():
 			if(i == 97):
 				r.append(k)
 	
+	for team in range(0, 10):
+		r[team].append("../static/image/team/" + r[team][0] + ".png")
+
 	return render_template('rank.html',data_list = r)
 
 
