@@ -79,21 +79,22 @@ def getPOGRank():
     return pog_data
 
 
+r = getTeamRank()
+pog_data = getPOGRank()
+
+
 @bp.route('/')
 def TeamRank():
-    r = getTeamRank()
     return render_template('rank.html', data_list=r, viewRanking=viewRanking)
 
 
 @bp.route('/team', methods=['POST'])
 def onTeamRank():
-    r = getTeamRank()
     viewRanking = 0
     return render_template('rank.html', data_list=r, viewRanking=viewRanking)
 
 
 @bp.route('/pog', methods=['POST'])
 def onPOGRank():
-    pog_data = getPOGRank()
     viewRanking = 1
     return render_template('rank.html', pog_data=pog_data, viewRanking=viewRanking)
