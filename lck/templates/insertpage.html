@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block content %}
+    <form action="{{ url_for('insert.create') }}" method="post">
+        날짜
+        <textarea name="mdate" id="mdate" cols="15"></textarea>
+        <br>
+        시간
+        <textarea name="mtime" id="mtime" cols="15"></textarea>
+        <br>
+        팀1
+        <textarea name="team1" id="team1" cols="15"></textarea>
+        팀2
+        <textarea name="team2" id="team2" cols="15"></textarea>
+
+        <input type="submit" value="매치등록">
+    </form>
+{% endblock %}
