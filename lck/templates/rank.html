@@ -1,6 +1,16 @@
 {% extends 'index.html' %}
 {% block content %}
 <body>
+    <div">
+        <form method="POST" action="/rank/team" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-secondary btn-lg">Team Ranking</button>
+        </form>
+        <form method="POST" action="/rank/pog" style="margin-top: 10px;">
+            <button type="submit" class="btn btn-secondary btn-lg">POG Ranking</button>
+        </form>
+    </div>
+
+    {% if viewRanking == 0 %}
 	<table class="table" style="text-align: center;">
         <caption style="text-align: center;">파란색: 4강 PO 진출 | 녹색: 6강 PO 진출 | 노란색: 포스트시즌 진출 실패 | 볼드체: 순위 확정</caption>
         <thead class="table-light">
@@ -108,5 +118,27 @@
             
         </tbody>
     </table>
+    {% else %}
+    <table class="table" style="text-align: center;">
+        <thead class="table-light">
+            <tr>
+                <th scope="col">순위</th>
+                <th scope="col">팀</th>
+                <th scope="col">선수명</th>
+                <th scope="col">점수</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for player in pog_data %}
+            <tr>
+                <th scope="row">{{ player[0] }}</th>
+                <td>{{ player[1] }}</td>
+                <td>{{ player[2] }}</td>
+                <td>{{ player[3] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
 </body>
 {% endblock %}
