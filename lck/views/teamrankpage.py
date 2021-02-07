@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 import requests
 from bs4 import BeautifulSoup
+import pymysql
 
 bp = Blueprint('teamrank', __name__, url_prefix='/rank')
 viewRanking = 0  # 0: Team Ranking 1: POG Ranking
@@ -76,6 +77,25 @@ def getPOGRank():
             p_cnt = 4
             player = []
 
+    for x in range(0, len(pog_data)):
+        pname = pog_data[x][2]
+        db = pymysql.connect(host='localhost', user='root', passwd='1234', db='lck', charset='utf8')
+        cur = db.cursor()
+
+        sql = "select liner from lckplayer where playername = '%s'"%(pname)
+        cur.execute(sql)
+        data = cur.fetchall()
+        pog_data[x].append("../static/image/line/" + data[0][0] + ".png")
+        # print("query : " , sql)
+        # print(data[0][0])
+        sql = "select team from lckplayer where playername = '%s'"%(pname)
+        cur.execute(sql)
+        data = cur.fetchall()
+        pog_data[x].append("../static/image/team/" + data[0][0] + ".png")
+        db.commit()
+        cur.close()
+        db.close()
+    print(pog_data)
     return pog_data
 
 
@@ -88,13 +108,13 @@ def TeamRank():
     return render_template('rank.html', data_list=r, viewRanking=viewRanking)
 
 
-@bp.route('/team', methods=['POST'])
+@bp.route('/team')
 def onTeamRank():
     viewRanking = 0
     return render_template('rank.html', data_list=r, viewRanking=viewRanking)
 
 
-@bp.route('/pog', methods=['POST'])
+@bp.route('/pog')
 def onPOGRank():
     viewRanking = 1
     return render_template('rank.html', pog_data=pog_data, viewRanking=viewRanking)
