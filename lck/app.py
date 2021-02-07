@@ -21,10 +21,11 @@ def create_app():
     import schema
     app.secret_key = 'some_secret'
     CORS(app)
-    from views import mainpage, teamrankpage, insertpage
+    from views import mainpage, teamrankpage, insertpage, t_match
     app.register_blueprint(mainpage.bp)
     app.register_blueprint(teamrankpage.bp)
     app.register_blueprint(insertpage.bp)
+    app.register_blueprint(t_match.bp)
     return app
 
 
