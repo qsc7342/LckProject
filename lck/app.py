@@ -8,17 +8,21 @@ from flask_sqlalchemy import SQLAlchemy
 
 import config
 
-# db = SQLAlchemy()
-# migrate = Migrate()
+db = SQLAlchemy()
+migrate = Migrate()
 DEBUG = True
 def create_app():
 	app = Flask(__name__)
-	app.config.from_object(__name__)
+	app.config.from_object(config)
+	db.init_app(app)
+	migrate.init_app(app, db)
+	import schema
 	app.secret_key = 'some_secret'
 	CORS(app)
-	from views import mainpage, teamrankpage
+	from views import mainpage, teamrankpage, insertpage
 	app.register_blueprint(mainpage.bp)
 	app.register_blueprint(teamrankpage.bp)
+	app.register_blueprint(insertpage.bp)
 	return app
 
 if __name__ == '__main__':
