@@ -1,7 +1,6 @@
 {% extends 'index.html' %}
 {% block content %}
 <body>
-    
     <table class="table" style="text-align: center;">
         {% for i in data %}
         <br /><br /><br /><br />
@@ -13,9 +12,7 @@
                     {{ "match 2" }}
                 {% endif %}</td>
                 <td><img src="../static/image/match/match_{{ i[1] }}.jpg" id="match_teamimage">{{ i[1] }}</td>
-                
                 <td><img src="../static/image/match/match_{{ i[2] }}.jpg" id="match_teamimage">{{ i[2] }}</td>
-                
             </tr>
         </tbody>
         {% endfor %}
