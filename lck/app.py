@@ -20,7 +20,9 @@ def MainPage():
 
 
 @app.route('/rank')
-def TeamRank():
+def Rank():
+
+    # 팀 순위 크롤링
     b = 1
     url = "https://namu.wiki/w/2021%20LoL%20Champions%20Korea%20Spring"
 
@@ -62,6 +64,15 @@ def TeamRank():
     for team in range(0, 10):
         r[team].append("../static/image/team/" + r[team][0] + ".png")
 
+    # 선수 POG순위 크롤링
+    response = requests.get(url)
+    ranking = soup.select_one(
+        "#app > div > div:nth-child(2) > article > div:nth-child(5) > div:nth-child(2) > div > div > div:nth-child(31) > div")
+    pog_ranks = ranking.find_all('td')
+    pog_data = []
+    for pog_rank in pog_ranks:
+        pog_data.append(pog_rank.get_text())
+        print(pog_rank.get_text())
     return render_template('rank.html', data_list=r)
 
 
