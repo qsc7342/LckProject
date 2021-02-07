@@ -22,4 +22,6 @@ def t_match():
     db.close()
     print(data)
 
+    
+
     return render_template('t_match.html',data = data)
