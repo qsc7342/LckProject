@@ -3,7 +3,7 @@ from app import db
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from schema import lckplayer
+from schema import lckmatch
 bp = Blueprint('insert', __name__, url_prefix='/insert')
 
 @bp.route('/')
@@ -12,10 +12,11 @@ def MainPage():
 
 @bp.route('/create/', methods=('POST',))
 def create():
-    name = request.form['name']
-    team = request.form['team']
-    line = request.form['line']
-    newplayer = lckplayer(name = name, team = team, line = line)
-    db.session.add(newplayer)
+    mdate = request.form['mdate']
+    mtime = request.form['mtime']
+    team1 = request.form['team1']
+    team2 = request.form['team2']
+    newmatch = lckmatch(mdate = mdate, mtime = mtime, team1 = team1, team2 = team2)
+    db.session.add(newmatch)
     db.session.commit()
     return render_template('insertpage.html')

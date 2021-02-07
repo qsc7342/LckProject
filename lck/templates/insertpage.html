@@ -1,15 +1,17 @@
 {% extends 'index.html' %}
 {% block content %}
     <form action="{{ url_for('insert.create') }}" method="post">
-        닉네임
-        <textarea name="name" id="name" cols="15"></textarea>
+        날짜
+        <textarea name="mdate" id="mdate" cols="15"></textarea>
         <br>
-        팀
-        <textarea name="team" id="team" cols="15"></textarea>
+        시간
+        <textarea name="mtime" id="mtime" cols="15"></textarea>
         <br>
-        라인
-        <textarea name="line" id="line" cols="15"></textarea>
+        팀1
+        <textarea name="team1" id="team1" cols="15"></textarea>
+        팀2
+        <textarea name="team2" id="team2" cols="15"></textarea>
 
-        <input type="submit" value="선수등록">
+        <input type="submit" value="매치등록">
     </form>
 {% endblock %}
