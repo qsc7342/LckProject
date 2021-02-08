@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" > </script>
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}" > </script>
 <style>
 * {box-sizing: border-box}
 body {font-family: Verdana, sans-serif; margin:0}
@@ -85,16 +89,17 @@ img {vertical-align: middle;}
   -webkit-animation-duration: 1.5s;
   animation-name: fade;
   animation-duration: 1.5s;
+  animation-fill-mode: forwards;
 }
 
 @-webkit-keyframes fade {
   from {opacity: 0.4} 
-  to {opacity: 1}
+  to {opacity: 1.0}
 }
 
 @keyframes fade {
   from {opacity: 0.4} 
-  to {opacity: 1}
+  to {opacity: 1.0}
 }
 
 /* On smaller screens, decrease text size */
@@ -130,14 +135,13 @@ img {vertical-align: middle;}
 		</div>
 	  </nav>
     <!-- Slideshow container -->
-    <div class="slideshow-container">
+    <div class="slideshow-container" style="margin-top: 135px;">
 
       <!-- Full-width images with number and caption text -->
       {% for i in data %}
           <div class="mySlides fade">
           <div class="numbertext">{{ loop.index }}/ 2</div>
-          <img src="../static/image/match/match{{ loop.index }}_{{ i[2] }}{{ i[3] }}.jpg" id="match_teamimage" style="width:100%">
-          <div class="text">Caption Text</div>
+          <img src="../static/image/match/match{{ loop.index }}_{{ i[2] }}{{ i[3] }}.jpg" id="match_teamimage">
           </div>
       {% endfor %}
   
@@ -159,13 +163,22 @@ showSlides(slideIndex);
 
 function plusSlides(n) {
   showSlides(slideIndex += n);
+  // checkSlides();
 }
 
 function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 
+// function checkSlides() {
+//   var slides = document.getElementsByClassName("mySlides");
+//   for(i = 0 ; i < slides.length ; i++) {
+//     console.log(slides[i].style.display);
+//   }
+// }
+
 function showSlides(n) {
+  // console.log("showSlides : " + n);
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
