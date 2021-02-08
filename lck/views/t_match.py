@@ -13,10 +13,11 @@ def t_match():
     db = pymysql.connect(host='localhost', user='root', passwd='1234', db='lck', charset='utf8')
     cur = db.cursor()
 
-    sql = "select mtime,team1,team2 from lckmatch where mdate = '%s'"%(time)
+    sql = "select mdate,mtime,team1,team2 from lckmatch where mdate = '%s'"%(time)
     cur.execute(sql)
     data = cur.fetchall()
     db.commit()
+
     cur.close()
     db.close()
     print(data)
