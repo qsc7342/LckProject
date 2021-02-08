@@ -1,15 +1,6 @@
 {% extends 'index.html' %}
 {% block content %}
 <body>
-    <div>
-        <form action="/rank/team" style="margin-top: 30px; display: inline;">
-            <button type="submit" class="btn btn-secondary btn-lg">Team Ranking</button>
-        </form>
-        <form action="/rank/pog" style="margin-top: 10px; display: inline;">
-            <button type="submit" class="btn btn-secondary btn-lg">POG Ranking</button>
-        </form>
-    </div>
-
     {% if viewRanking == 0 %}
 	<table class="table" style="text-align: center; font-size:28px;">
         <caption style="text-align: center;">파란색: 4강 PO 진출 | 녹색: 6강 PO 진출 | 노란색: 포스트시즌 진출 실패 | 볼드체: 순위 확정</caption>

@@ -102,12 +102,6 @@ def getPOGRank():
 r = getTeamRank()
 pog_data = getPOGRank()
 
-
-@bp.route('/')
-def TeamRank():
-    return render_template('rank.html', data_list=r, viewRanking=viewRanking)
-
-
 @bp.route('/team')
 def onTeamRank():
     viewRanking = 0

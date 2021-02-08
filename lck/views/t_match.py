@@ -17,7 +17,6 @@ def t_match():
     cur.execute(sql)
     data = cur.fetchall()
     db.commit()
-
     cur.close()
     db.close()
     print(data)
